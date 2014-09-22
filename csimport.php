@@ -268,6 +268,9 @@ EOS;
   static function url_request($url, $method = 'get', $params = null) {
     // init the curl agent
     $agent = curl_init();
+    
+    //disables SSL certificate verification
+    curl_setopt($agent, CURLOPT_SSL_VERIFYPEER, false);
 
     // get the url requested
     if (!curl_setopt($agent, CURLOPT_URL, $url)) {
